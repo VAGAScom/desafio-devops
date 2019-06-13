@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  example-app:
+    image: jailsonsilva/devops-teste:0.2
+    ports:
+      - 80:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+
+networks:
+  frontend:
